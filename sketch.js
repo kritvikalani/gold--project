@@ -30,6 +30,7 @@ function setup() {
     score = 0;
 
   saviour= createSprite(displayWidth/2,780,50,50)
+  saviour.scale = 0.75
  saviour.addImage(saviourImage);
 
  /*if(frameCount % 150 === 0){
@@ -44,22 +45,22 @@ function draw() {
   Engine.update(engine);
 
   if (keyDown(RIGHT_ARROW)) {
-    saviour.velocityX = 3;
+    saviour.velocityX = 4;
     saviour.velocityY = 0;
   }
 
   if (keyDown(LEFT_ARROW)) {
-    saviour.velocityX = -3;
+    saviour.velocityX = -4;
     saviour.velocityY = 0;
   }
 
   if (keyDown(UP_ARROW)) {
-    saviour.velocityY = -3;
+    saviour.velocityY = -4;
     saviour.velocityX = 0;
   }
 
   if (keyDown(DOWN_ARROW)) {
-    saviour.velocityY = 3;
+    saviour.velocityY = 4;
     saviour.velocityX = 0;
   }
 
@@ -78,6 +79,7 @@ function draw() {
     saviour.y = 780;
     saviour.velocityX = 0;
     saviour.velocityY = 0;
+    score = 0;
   }
 
   /*for (var i in corona){
@@ -115,8 +117,9 @@ function Mask1() {
     mask1.velocityX = 0;
     mask1.velocityY = random(1,3)
     mask1.scale = 0.1;
-    mask1.setCollider("circle", 0, 0, 20)
+    mask1.setCollider("circle", 0, 0, 10)
     mask1.debug = 2
+    mask1.lifetime = 1200
     mask1Group.add(mask1)
   }
 }
@@ -130,17 +133,18 @@ function Mask2() {
     mask2.scale = 0.2;
     mask2.setCollider("circle", 0, 0, 20)
     mask2.debug = 2
+    mask2.lifetime = 1200
     mask2Group.add(mask2)
   }
 }
 
 function covid() {
   if(frameCount%120===0) {
-    corona = createSprite(random(0,600), random(0,600), 20);
+    corona = createSprite(random(0,600), random(0,600), 10);
     corona.velocityY = 2
     corona.addImage("covid", coronaImage)
-    corona.scale = 0.1
-    corona.setCollider("rectangle", 0, 0, 5, 5)
+    corona.scale = 0.08
+    corona.setCollider("rectangle", 0, 0, 3, 3)
     corona.debug = 1
     coronaGroup.add(corona);
   }
